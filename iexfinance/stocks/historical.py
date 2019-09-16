@@ -30,8 +30,8 @@ class HistoricalReader(Stock):
         self.cost = 0
         super(HistoricalReader, self).__init__(symbols, **kwargs)
 
-    def __del__(self):
-        print('this operation costs: %d' % self.cost)
+    # def __del__(self):
+    #     print('this operation costs: %d' % self.cost)
 
     @property
     def chart_range(self):
@@ -116,8 +116,8 @@ class HistoricalReaderCostOptimized(Stock):
         self.current_date = None
         super(HistoricalReaderCostOptimized, self).__init__(symbols, **kwargs)
 
-    def __del__(self):
-        print('this operation costs: %d' % self.cost)
+    # def __del__(self):
+    #     print('this operation costs: %d' % self.cost)
 
     @property
     def params(self):
@@ -224,8 +224,8 @@ class IntradayReader(_IEXBase):
         self.cost = 0
         super(IntradayReader, self).__init__(**kwargs)
 
-    def __del__(self):
-        print('this operation costs: %d' % self.cost)
+    # def __del__(self):
+    #     print('this operation costs: %d' % self.cost)
 
     @property
     def params(self):
