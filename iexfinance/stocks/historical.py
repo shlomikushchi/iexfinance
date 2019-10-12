@@ -182,7 +182,7 @@ class HistoricalReaderCostOptimized(Stock):
             is_pandas = False
         day_count = 0
         while self.start + datetime.timedelta(days=day_count) <= self.end:
-            self.current_date = self.start + datetime.timedelta(days=day_count)
+            self.current_date = (self.start + datetime.timedelta(days=day_count)).strftime("%Y%m%d")
             # using the parent fetch() method but with optimized params
             ohlcv = super(HistoricalReaderCostOptimized, self).fetch(**kwargs)
             if len(self.symbols) > 1:
