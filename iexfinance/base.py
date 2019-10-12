@@ -4,7 +4,7 @@ import time
 import requests
 
 from iexfinance.utils import _init_session
-from iexfinance.utils.exceptions import IEXQueryError
+from iexfinance.utils.exceptions import IEXQueryError, IEX400Error
 from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
 
 # Data provided for free by IEX
@@ -160,12 +160,13 @@ class _IEXBase(object):
         """
         Handles all responses which return an error status code
         """
-        auth_msg = "The query could not be completed. Invalid auth token."
 
         status_code = response.status_code
         if 400 <= status_code < 500:
             if status_code == 400:
-                raise auth_error(auth_msg)
+                # could be diffrent things: https://iexcloud.io/docs/api/#errors
+                msg = "The query could not be completed: %s" % response.content.decode('ascii')
+                raise IEX400Error(msg)
             else:
                 raise auth_error("The query could not be completed. "
                                  "There was a client-side error with your "

@@ -61,6 +61,19 @@ class IEXAuthenticationError(Exception):
         return self.msg
 
 
+class IEX400Error(Exception):
+    """
+    This error is thrown when there is an authentication/parameter issue with
+    the IEX cloud request.
+    """
+
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __str__(self):
+        return self.msg
+
+
 class IEXVersionError(Exception):
     """
     This error is thrown when an attempt is made to access an IEX Cloud
