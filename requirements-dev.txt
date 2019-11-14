@@ -2,7 +2,7 @@ flake8
 flake8-rst
 ipython
 pytest>=4
-pytest-runner
+pytest-runner==5.1
 requests-cache
 six
 tox
