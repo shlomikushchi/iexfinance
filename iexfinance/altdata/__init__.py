@@ -44,9 +44,6 @@ def get_social_sentiment(symbol, period_type=None, date=None, **kwargs):
     date: str or datetime.datetime
         Specify date to obtain sentiment data
     """
-    import warnings
-    warnings.warn("UNSTABLE ENDPOINT: Not yet fully implemented by the "
-                  "provider.")
     return SocialSentiment(symbol, period_type, date, **kwargs).fetch()
 
 

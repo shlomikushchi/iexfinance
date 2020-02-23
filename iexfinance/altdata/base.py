@@ -35,7 +35,7 @@ class SocialSentiment(_IEXBase):
             raise ValueError("period_type %s is not valid." % period_type)
         self.symbol = symbol
         try:
-            self.date = date.strftime("%Y%M%d")
+            self.date = date.strftime("%Y%m%d")
         except AttributeError:
             self.date = date
         super(SocialSentiment, self).__init__(**kwargs)
@@ -43,10 +43,10 @@ class SocialSentiment(_IEXBase):
     @property
     def url(self):
         if self.date:
-            return '/stock/%s/sentiment/%s/%s' % (self.symbol,
+            return 'stock/%s/sentiment/%s/%s' % (self.symbol,
                                                   self.period_type, self.date)
         else:
-            return '/stock/%s/sentiment/%s' % (self.symbol, self.period_type)
+            return 'stock/%s/sentiment/%s' % (self.symbol, self.period_type)
 
     @cloud_endpoint
     def fetch(self):
@@ -61,7 +61,7 @@ class CEOCompensation(_IEXBase):
 
     @property
     def url(self):
-        return "/stock/%s/ceo-compensation" % self.symbol
+        return "stock/%s/ceo-compensation" % self.symbol
 
     @cloud_endpoint
     def fetch(self):
